@@ -1,0 +1,231 @@
+:root{
+  --sidebar-width: 220px;
+  --accent-1: #a18cd1;
+  --accent-2: #ed6ea0;
+  --bg-start: #fbbdbc;
+  --bg-mid: #a18cd1;
+  --bg-end: #fc67fa;
+}
+
+/* background & base */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(120deg, var(--bg-start) 0%, var(--bg-mid) 60%, var(--bg-end) 100%);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-root {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+  min-height: 100vh;
+  padding: 28px;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+/* Sidebar */
+.sidebar {
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border-radius: 18px;
+  padding: 18px;
+  color: #fff;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.brand-name {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.15rem;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.12);
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.side-button {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.95);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
+  text-align: left;
+}
+.side-button:hover {
+  transform: translateX(6px);
+  background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  box-shadow: 0 8px 20px rgba(161,140,209,0.06);
+}
+.side-button .side-icon {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 8px;
+}
+
+/* Active state */
+.side-button.active {
+  background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.06));
+  transform: translateX(6px);
+  box-shadow: 0 12px 26px rgba(161,140,209,0.12);
+  color: #fff;
+}
+
+/* main content */
+.main-content {
+  flex: 1;
+  max-width: 980px;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* content wrapper replicates previous container look */
+.content-wrap {
+  background: rgba(255,255,255,0.97);
+  border-radius: 22px;
+  box-shadow: 0 8px 22px rgba(175,71,190,0.13);
+  padding: 28px;
+  min-height: 520px;
+  box-sizing: border-box;
+}
+
+/* Restored music-player styling */
+.music-player {
+  background: linear-gradient(90deg,#fae1f6,#ed6ea0 100%);
+  border-radius: 18px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 14px #a18cd138;
+  max-width: 360px;
+  margin: 10px auto 0 auto;
+}
+.music-player ul {
+  list-style: none;
+  padding: 0;
+}
+.music-player li {
+  margin-bottom: 12px;
+}
+.music-player button {
+  background: linear-gradient(90deg,#ed6ea0,#fae1f6 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 28px;
+  margin: 0 7px;
+  font-size: 1.08em;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: background .22s;
+  font-weight: 600;
+}
+.music-player button.playing {
+  background: linear-gradient(90deg,#fae1f6,#fc67fa 100%);
+  color: #a18cd1;
+  font-weight: 700;
+}
+
+/* Decorative / helper classes (kept for existing components) */
+.animated-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.65em;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  color: var(--accent-2);
+  text-shadow: 0 1px 8px rgba(161,140,209,0.45);
+}
+.welcome-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.18em;
+  margin-bottom: 24px;
+  color: var(--accent-1);
+}
+
+/* interactive small icon used near headings */
+.interactive-icon {
+  background: linear-gradient(90deg,#fff2fb,#fffaf3);
+  border: 1px solid rgba(161,140,209,0.18);
+  padding: 6px 8px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
+  margin-left: 8px;
+  font-size: 0.95em;
+}
+.interactive-icon:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 8px 18px rgba(161,140,209,0.12);
+}
+
+/* Responsive behavior: sidebar -> top horizontal nav on small screens */
+@media (max-width: 880px) {
+  :root { --sidebar-width: 100%; }
+  .app-root {
+    flex-direction: column;
+    padding: 12px;
+  }
+  .sidebar {
+    width: 100%;
+    min-width: 100%;
+    border-radius: 12px;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+  .side-nav {
+    flex-direction: row;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+  .side-button {
+    padding: 8px 10px;
+    border-radius: 10px;
+    gap: 8px;
+    white-space: nowrap;
+  }
+  .main-content {
+    width: 100%;
+  }
+  .content-wrap {
+    padding: 18px;
+    border-radius: 12px;
+    min-height: 400px;
+  }
+}
