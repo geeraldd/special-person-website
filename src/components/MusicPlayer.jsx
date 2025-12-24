@@ -5,43 +5,59 @@ import { motion } from 'framer-motion';
 const playlist = [
   { 
     id: 0,
-    title: "Our Song", 
-    src: "/music/song1.mp4",
+    title: "You're My", 
+    src: "/music/song1.mp3",
     emoji: "🎵",
-    color: "#fae1f6",
-    accentColor: "#ed6ea0"
+    color: "#C41E3A",
+    accentColor: "#D4AF37"
   },
   { 
     id: 1,
-    title: "Sweet Moments", 
-    src: "/music/song2.mp4",
+    title: "Moon", 
+    src: "/music/song2.mp3",
     emoji: "💕",
-    color: "#fff7f0",
-    accentColor: "#fc67fa"
+    color: "#165B33",
+    accentColor: "#D4AF37"
   },
   { 
     id: 2,
-    title: "Forever with You", 
-    src: "/music/song3.mp4",
+    title: "LDR", 
+    src: "/music/song3.mp3",
     emoji: "💖",
-    color: "#f0f7ff",
-    accentColor: "#a18cd1"
+    color: "#C41E3A",
+    accentColor: "#FFFFFF"
   },
   { 
     id: 3,
-    title: "Love's Melody", 
-    src: "/music/song4.mp4",
+    title: "Everynight", 
+    src: "/music/song4.mp3",
     emoji: "🎶",
-    color: "#fff9f0",
-    accentColor: "#fbbdbc"
+    color: "#165B33",
+    accentColor: "#C41E3A"
   },
   { 
-    id: 4,
-    title: "Always & Forever", 
-    src: "/music/song5.mp4",
+    id:  4,
+    title: "Us", 
+    src: "/music/song5.mp3",
     emoji: "✨",
-    color: "#fef9f3",
-    accentColor: "#ff6b9d"
+    color: "#D4AF37",
+    accentColor: "#C41E3A"
+  },
+   { 
+    id:  5,
+    title: "Ordinary", 
+    src: "/music/song6.mp3",
+    emoji: "✨",
+    color: "#37ccd4ff",
+    accentColor: "#C41E3A"
+  },
+  { 
+    id:  6,
+    title: "Iris", 
+    src: "/music/song7.mp3",
+    emoji: "✨",
+    color: "#b537d4ff",
+    accentColor: "#C41E3A"
   }
 ];
 
@@ -61,7 +77,7 @@ export default function MusicPlayer() {
     if (sound) sound.stop();
     
     const howl = new Howl({
-      src: [playlist[idx].  src],
+      src: [playlist[idx]. src],
       html5: true,
       volume: 0.8,
       onend: () => {
@@ -88,7 +104,7 @@ export default function MusicPlayer() {
       sound.pause();
       setIsPlaying(false);
     } else if (!isPlaying && sound) {
-      sound.  play();
+      sound.play();
       setIsPlaying(true);
     }
   }
@@ -114,22 +130,24 @@ export default function MusicPlayer() {
         }}
       >
         <h2 style={{
-          fontFamily: "'Dancing Script', cursive",
-          fontSize: '2.2rem',
-          color: '#d70465',
+          fontFamily: "'Playfair Display', serif",
+          fontSize: '2.4rem',
+          color: '#C41E3A',
           margin: '0 0 8px 0',
-          textShadow: '0 2px 8px rgba(165, 77, 153, 0.2)'
+          textShadow: '0 2px 8px rgba(196, 30, 58, 0.25)',
+          fontWeight: 800,
+          letterSpacing: '-0.02em'
         }}>
-          🎵 Our Playlist 🎵
+          🎵 Music Playlist 🎵
         </h2>
         <p style={{
           fontFamily: "'Montserrat', sans-serif",
-          color: '#a18cd1',
+          color: '#165B33',
           fontSize: '0.95rem',
           margin: 0,
           fontWeight: 600
         }}>
-          Click on any record to hear our love story in music 💕
+          Click on any record to hear music 💕
         </p>
       </motion.div>
 
@@ -141,21 +159,21 @@ export default function MusicPlayer() {
         gap: '30px',
         padding: '40px 20px',
         borderRadius: '24px',
-        background: 'linear-gradient(135deg, rgba(250, 225, 246, 0.5) 0%, rgba(252, 103, 250, 0.1) 100%)',
+        background: 'linear-gradient(135deg, rgba(196, 30, 58, 0.12) 0%, rgba(212, 175, 55, 0.10) 100%)',
         marginBottom: '32px',
         flexWrap: 'wrap',
-        border: '2px solid rgba(237, 110, 160, 0.15)'
+        border: '2px solid rgba(212, 175, 55, 0.2)'
       }}>
         {playlist.map((song, idx) => (
           <motion.div
             key={song.id}
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: idx * 0.1 }}
+            transition={{ duration:  0.5, delay: idx * 0.1 }}
             whileHover={{ scale: 1.05 }}
             onClick={() => playSong(idx)}
             style={{
-              cursor: 'pointer',
+              cursor:  'pointer',
               perspective: '1000px'
             }}
           >
@@ -175,7 +193,7 @@ export default function MusicPlayer() {
                 background: `linear-gradient(135deg, ${song.color} 0%, ${song.accentColor} 100%)`,
                 boxShadow: playingIdx === idx 
                   ? `0 0 40px ${song.accentColor}, 0 20px 40px rgba(0, 0, 0, 0.15)`
-                  : `0 12px 30px rgba(165, 77, 153, 0.15)`,
+                  : `0 12px 30px rgba(196, 30, 58, 0.15)`,
                 border: '3px solid rgba(255, 255, 255, 0.5)',
                 display: 'flex',
                 alignItems: 'center',
@@ -205,7 +223,7 @@ export default function MusicPlayer() {
                 border: '2px solid rgba(255, 255, 255, 0.4)',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center',
+                justifyContent:  'center',
                 zIndex: 3,
                 boxShadow: '0 8px 20px rgba(0, 0, 0, 0.2)'
               }}>
@@ -223,13 +241,13 @@ export default function MusicPlayer() {
                   }}
                 >
                   {song.emoji}
-                </motion.  div>
+                </motion. div>
               </div>
 
               {/* Song info - shown on hover/play */}
               <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ opacity: playingIdx === idx ?   1 : 0 }}
+                animate={{ opacity: playingIdx === idx ?  1 : 0 }}
                 transition={{ duration: 0.3 }}
                 style={{
                   position: 'absolute',
@@ -237,9 +255,9 @@ export default function MusicPlayer() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  background: 'rgba(0, 0, 0, 0.  6)',
+                  background: 'rgba(0, 0, 0, 0.6)',
                   borderRadius: '50%',
-                  zIndex: 2,
+                  zIndex:  2,
                   backdropFilter: 'blur(2px)'
                 }}
               >
@@ -259,14 +277,14 @@ export default function MusicPlayer() {
                     fontSize: '0.75rem',
                     opacity: 0.9
                   }}>
-                    {song.  title}
+                    {song.title}
                   </div>
                 </div>
-              </motion. div>
+              </motion.div>
             </motion.div>
 
             {/* Song title below vinyl */}
-            <motion.  div
+            <motion.div
               style={{
                 textAlign: 'center',
                 marginTop: '14px',
@@ -275,11 +293,11 @@ export default function MusicPlayer() {
             >
               <div style={{
                 fontWeight: 700,
-                color: playingIdx === idx ?   '#d70465' : '#a18cd1',
+                color: playingIdx === idx ?  '#C41E3A' :  '#165B33',
                 fontSize: '0.95rem',
                 transition: 'color 0.3s'
               }}>
-                {song. title}
+                {song.title}
               </div>
               {playingIdx === idx && (
                 <motion.div
@@ -295,23 +313,23 @@ export default function MusicPlayer() {
                   ▶ Playing... 
                 </motion.div>
               )}
-            </motion. div>
+            </motion.div>
           </motion.div>
         ))}
       </div>
 
       {/* Player Controls */}
       {selectedSong !== null && (
-        <motion.  div
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
           style={{
-            background: 'linear-gradient(135deg, #fae1f6 0%, #ed6ea0 50%, #fc67fa 100%)',
+            background: `linear-gradient(135deg, ${playlist[selectedSong].color}, ${playlist[selectedSong].accentColor})`,
             borderRadius: '24px',
             padding: '28px',
             marginBottom: '24px',
-            boxShadow: '0 16px 32px rgba(237, 110, 160, 0.25)',
+            boxShadow: '0 16px 32px rgba(196, 30, 58, 0.25)',
             border: '2px solid rgba(255, 255, 255, 0.3)'
           }}
         >
@@ -321,8 +339,8 @@ export default function MusicPlayer() {
             marginBottom: '20px'
           }}>
             <div style={{
-              fontFamily: "'Dancing Script', cursive",
-              fontSize: '1.5rem',
+              fontFamily: "'Playfair Display', serif",
+              fontSize: '1.8rem',
               color: '#fff',
               fontWeight: 700,
               marginBottom: '8px',
@@ -332,7 +350,7 @@ export default function MusicPlayer() {
             </div>
             <div style={{
               fontFamily: "'Montserrat', sans-serif",
-              fontSize: '0.9rem',
+              fontSize:  '0.9rem',
               color: 'rgba(255, 255, 255, 0.95)',
               fontWeight: 600
             }}>
@@ -344,7 +362,7 @@ export default function MusicPlayer() {
           <div style={{
             display: 'flex',
             gap: '12px',
-            justifyContent: 'center',
+            justifyContent:  'center',
             flexWrap: 'wrap'
           }}>
             <motion.button
@@ -353,7 +371,7 @@ export default function MusicPlayer() {
               onClick={togglePlayPause}
               style={{
                 background: 'rgba(255, 255, 255, 0.95)',
-                color: '#d70465',
+                color: '#C41E3A',
                 border: 'none',
                 borderRadius: '20px',
                 padding: '12px 32px',
@@ -373,7 +391,7 @@ export default function MusicPlayer() {
               onClick={stopSong}
               style={{
                 background: 'rgba(255, 255, 255, 0.95)',
-                color: '#d70465',
+                color: '#C41E3A',
                 border: 'none',
                 borderRadius: '20px',
                 padding: '12px 32px',
@@ -387,7 +405,7 @@ export default function MusicPlayer() {
               ⏹ Stop
             </motion.button>
           </div>
-        </motion. div>
+        </motion.div>
       )}
 
       {/* Info Section */}
@@ -396,28 +414,28 @@ export default function MusicPlayer() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
         style={{
-          background: 'rgba(237, 110, 160, 0.08)',
+          background: 'linear-gradient(135deg, rgba(196, 30, 58, 0.08), rgba(212, 175, 55, 0.08))',
           borderRadius: '16px',
           padding: '20px',
-          border: '2px solid rgba(237, 110, 160, 0.2)',
+          border: '2px solid rgba(212, 175, 55, 0.2)',
           textAlign: 'center'
         }}
       >
         <div style={{
           fontFamily: "'Montserrat', sans-serif",
-          color: '#a18cd1',
+          color: '#165B33',
           fontSize: '0.95rem',
           fontWeight: 600,
           marginBottom: '8px'
         }}>
-          💿 Click on any vinyl record to play our songs
+          💿 Click on any vinyl record to play songs 🎶
         </div>
         <div style={{
           fontFamily: "'Montserrat', sans-serif",
-          color: '#fc67fa',
+          color: '#C41E3A',
           fontSize: '0.85rem'
         }}>
-          Supports MP3, MP4, WAV, and more!  Add songs to /public/music folder 🎶
+      
         </div>
       </motion.div>
     </motion.div>

@@ -2,16 +2,12 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const images = [
-  { src: "/images/photo1.jpg", title: "Our First Memory", emoji: "💑" },
-  { src: "/images/photo2.jpg", title: "Sweet Moments", emoji: "🌹" },
-  { src: "/images/photo3.jpg", title: "Forever in My Heart", emoji: "💕" },
-  { src: "/images/photo4.jpg", title: "Beautiful You", emoji: "✨" },
-  { src: "/images/photo5.jpg", title: "Happy Times", emoji: "😊" },
-  { src: "/images/photo6.jpg", title: "Close to My Heart", emoji: "💖" },
-  { src: "/images/photo7.jpg", title: "Lovely Moments", emoji: "🌸" },
-  { src: "/images/photo8.jpg", title: "Us Together", emoji: "👫" },
-  { src: "/images/photo9.jpg", title: "My Favorite Person", emoji: "💝" },
-  { src: "/images/photo10.jpg", title: "Every Moment Counts", emoji: "⏰" },
+  { src: "/images/photo1.jpg", title: "Ako", emoji: "💑" },
+  { src: "/images/photo2.jpg", title: "Ako ulit", emoji: "🌹" },
+  { src: "/images/photo3.jpg", title: "Ako na nmn", emoji: "💕" },
+  { src: "/images/photo4.jpg", title: "Ako na nmn ulit", emoji: "✨" },
+  { src:  "/images/photo5.jpg", title: "Mukha ko padin", emoji: "😊" },
+ 
 ];
 
 function PhotoFrame({ image, index }) {
@@ -31,79 +27,74 @@ function PhotoFrame({ image, index }) {
         perspective: '1000px'
       }}
     >
-      {/* Frame container */}
       <motion.div
         animate={{
-          rotateX: isHovered ? -5 : 0,
-          rotateY: isHovered ? (index % 2 === 0 ? 3 : -3) : 0,
-          y: isHovered ? -8 : 0
+          rotateX: isHovered ? -8 : 0,
+          rotateY: isHovered ? (index % 2 === 0 ? 5 : -5) : 0,
+          y: isHovered ? -12 : 0,
+          boxShadow: isHovered 
+            ? '0 25px 50px rgba(196, 30, 58, 0.3), 0 0 0 2px rgba(212, 175, 55, 0.4)' 
+            : '0 12px 30px rgba(196, 30, 58, 0.15), 0 0 0 1px rgba(212, 175, 55, 0.2)'
         }}
         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
         style={{
           background: '#fff',
-          borderRadius: '12px',
-          padding: '12px',
-          boxShadow: isHovered 
-            ? '0 20px 40px rgba(165, 77, 153, 0.25), 0 0 0 1px rgba(237, 110, 160, 0.3)' 
-            : '0 8px 20px rgba(165, 77, 153, 0.12), 0 0 0 1px rgba(237, 110, 160, 0.15)',
-          transition: 'all 0.3s ease',
-          border: '1px solid rgba(255, 192, 208, 0.5)',
+          borderRadius: '14px',
+          padding: '14px',
+          boxShadow: '0 12px 30px rgba(196, 30, 58, 0.15)',
+          border: '2px solid rgba(212, 175, 55, 0.25)',
           backgroundColor: '#fefbff',
-          transformStyle: 'preserve-3d'
+          transformStyle: 'preserve-3d',
+          position: 'relative'
         }}
       >
         {/* Decorative corner dots */}
-        <div style={{
-          position: 'absolute',
-          top: 8,
-          left: 8,
-          width: 4,
-          height: 4,
-          borderRadius: '50%',
-          background: 'linear-gradient(135deg, #ed6ea0, #fc67fa)',
-          zIndex: 10
-        }} />
-        <div style={{
-          position: 'absolute',
-          top: 8,
-          right: 8,
-          width: 4,
-          height: 4,
-          borderRadius: '50%',
-          background: 'linear-gradient(135deg, #ed6ea0, #fc67fa)',
-          zIndex: 10
-        }} />
-        <div style={{
-          position: 'absolute',
-          bottom: 8,
-          left: 8,
-          width: 4,
-          height: 4,
-          borderRadius: '50%',
-          background: 'linear-gradient(135deg, #ed6ea0, #fc67fa)',
-          zIndex: 10
-        }} />
-        <div style={{
-          position: 'absolute',
-          bottom: 8,
-          right: 8,
-          width: 4,
-          height: 4,
-          borderRadius: '50%',
-          background: 'linear-gradient(135deg, #ed6ea0, #fc67fa)',
-          zIndex: 10
-        }} />
+        {[
+          { top: 8, left: 8 },
+          { top: 8, right: 8 },
+          { bottom: 8, left: 8 },
+          { bottom: 8, right: 8 }
+        ].map((pos, i) => (
+          <motion. div
+            key={i}
+            animate={{ scale: isHovered ? 1.3 : 1 }}
+            style={{
+              position: 'absolute',
+              ... pos,
+              width: 5,
+              height: 5,
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, #C41E3A, #D4AF37)',
+              zIndex: 10
+            }}
+          />
+        ))}
+
+        {/* String/wire effect */}
+        <motion. div
+          animate={{ scaleY: isHovered ? 1.15 : 1 }}
+          style={{
+            position: 'absolute',
+            top: '-20px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '2px',
+            height: '20px',
+            background: 'linear-gradient(to bottom, #8B7355, rgba(139, 115, 85, 0.3))',
+            borderRadius: '2px',
+            zIndex: 5
+          }}
+        />
 
         {/* Photo container */}
         <div style={{
           position: 'relative',
           overflow: 'hidden',
-          borderRadius: '8px',
+          borderRadius: '10px',
           aspectRatio: '4/5',
           background: '#f5f5f5',
-          marginBottom: '10px'
+          marginBottom: '12px'
         }}>
-          {/* Loading shimmer */}
           {! isLoaded && (
             <div style={{
               position: 'absolute',
@@ -115,19 +106,18 @@ function PhotoFrame({ image, index }) {
             }} />
           )}
 
-          {/* Photo */}
           <motion.img
-            src={image. src}
-            alt={image. title}
+            src={image.src}
+            alt={image.title}
             onLoad={() => setIsLoaded(true)}
-            animate={{ scale: isHovered ? 1.05 : 1 }}
+            animate={{ scale: isHovered ? 1.08 : 1 }}
             transition={{ duration: 0.3 }}
             style={{
               width: '100%',
               height: '100%',
               objectFit: 'cover',
-              borderRadius: '6px',
-              display: isLoaded ? 'block' : 'none'
+              borderRadius: '8px',
+              display: isLoaded ? 'block' :  'none'
             }}
           />
 
@@ -138,18 +128,18 @@ function PhotoFrame({ image, index }) {
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'radial-gradient(circle at center, rgba(237, 110, 160, 0.4), rgba(165, 77, 153, 0.3))',
+              background: 'radial-gradient(circle at center, rgba(196, 30, 58, 0.5), rgba(22, 91, 51, 0.3))',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              borderRadius: '6px',
+              borderRadius: '8px',
               zIndex: 5
             }}
           >
             <motion.div
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 0.6, repeat: Infinity }}
-              style={{ fontSize: '2. 5rem' }}
+              style={{ fontSize: '3rem' }}
             >
               💖
             </motion.div>
@@ -166,17 +156,17 @@ function PhotoFrame({ image, index }) {
             alignItems: 'center',
             justifyContent: 'center',
             gap: '6px',
-            marginBottom: '4px'
+            marginBottom: '6px'
           }}>
-            <span style={{ fontSize: '1.1rem' }}>{image.emoji}</span>
+            <span style={{ fontSize: '1.2rem' }}>{image.emoji}</span>
           </div>
           <motion.div
-            animate={{ color: isHovered ? '#d70465' : '#a18cd1' }}
+            animate={{ color: isHovered ? '#C41E3A' : '#165B33' }}
             transition={{ duration: 0.2 }}
             style={{
               fontFamily: "'Montserrat', sans-serif",
-              fontSize: '0.85rem',
-              fontWeight: 600,
+              fontSize: '0.9rem',
+              fontWeight: 700,
               whiteSpace: 'nowrap',
               overflow: 'hidden',
               textOverflow: 'ellipsis',
@@ -186,7 +176,7 @@ function PhotoFrame({ image, index }) {
             {image.title}
           </motion.div>
         </div>
-      </motion.div>
+      </motion. div>
     </motion.div>
   );
 }
@@ -208,29 +198,32 @@ export default function Gallery() {
         }}
       >
         <h2 style={{
-          fontFamily: "'Dancing Script', cursive",
-          fontSize: '2. 2rem',
-          color: '#d70465',
+          fontFamily: "'Playfair Display', serif",
+          fontSize: '2.4rem',
+          color: '#C41E3A',
           margin: '0 0 8px 0',
-          textShadow: '0 2px 8px rgba(165, 77, 153, 0.2)'
+          textShadow: '0 2px 8px rgba(196, 30, 58, 0.25)',
+          fontWeight: 800,
+          letterSpacing: '-0.02em'
         }}>
-          ✨ Our Memories ✨
+          🎄 Me, Myself and I 🎄
         </h2>
         <p style={{
           fontFamily: "'Montserrat', sans-serif",
-          color: '#a18cd1',
+          color: '#165B33',
           fontSize: '0.95rem',
-          margin: 0
+          margin: 0,
+          fontWeight: 600
         }}>
-          Every moment with you is precious.  Hover to see the love!  💕
+          Pagmumukha kolng to lahat, magsawa ka! Kasi wala akong hawak na picture mo💕
         </p>
       </motion.div>
 
-      {/* Gallery grid - responsive for 10+ images */}
+      {/* Gallery grid */}
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-        gap: '20px',
+        gap: '24px',
         padding: '20px 0',
         justifyContent: 'center'
       }}>
@@ -247,24 +240,24 @@ export default function Gallery() {
         style={{
           textAlign: 'center',
           marginTop: '32px',
-          color: '#a18cd1',
+          color: '#165B33',
           fontFamily: "'Montserrat', sans-serif",
           fontSize: '0.9rem',
           padding: '16px',
-          background: 'rgba(237, 110, 160, 0. 05)',
+          background: 'linear-gradient(135deg, rgba(196, 30, 58, 0.08), rgba(212, 175, 55, 0.08))',
           borderRadius: '14px',
-          backdropFilter: 'blur(4px)'
+          backdropFilter: 'blur(4px)',
+          border: '2px solid rgba(212, 175, 55, 0.15)'
         }}
       >
-        <div style={{ marginBottom: '8px' }}>
-          🖼️ Click or hover over photos to see them come alive
+        <div style={{ marginBottom: '8px', fontWeight: 700 }}>
+          🖼️ Hanging picture frames of my faces haha
         </div>
-        <div style={{ fontSize: '0.85rem', color: '#fc67fa' }}>
-          These are our beautiful moments frozen in time 📸
+        <div style={{ fontSize: '0.85rem', color: '#C41E3A' }}>
+          These are my cute moments frozen in time 📸
         </div>
       </motion.div>
 
-      {/* CSS animations */}
       <style>{`
         @keyframes shimmer {
           0% { background-position: 200% 0; }
@@ -278,9 +271,9 @@ export default function Gallery() {
           }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width:  640px) {
           [style*="gridTemplateColumns"] {
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) ! important;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
             gap: 12px !important;
           }
         }
